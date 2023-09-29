@@ -1,0 +1,51 @@
+<%- include("partials/header.ejs") %>
+
+<table>
+    <tr>
+        <th><h2>Work Related Task</h2></th>
+        <th><h2>Daily Task</h2></th>
+    </tr>
+    <tr>
+        <td id="work_id">
+            <% if(locals.list_work) {%>
+                <% for(i=0;i<list_work.length;i++) {  %>
+                    <li>
+                        <div class="flex-container" id="work_list">
+                            <span class="left"> <input type="checkbox"> <%= list_work[i] %></span>
+                            <span class="right"> <button type="button">Del</button> </span>
+                        </div>
+                         
+                    </li>
+                <% } %>
+            <% } %>
+        </td>
+        <td id="day_id">
+            <% if(locals.list_day) {%>
+                <% for(i=0;i<list_day.length;i++) {  %>
+                    <li>
+                        <div class="flex-container">
+                            <span class="left"> <input type="checkbox"> <%= list_day[i] %> </span>
+                            <span class="right"> <button type="button">Del</button> </span>
+                        </div>
+                    </li>
+                <% } %>
+            <% } %>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <form action="/work" method="post">
+                <input type="text" name="task" placeholder="Enter Task">
+                <button type="submit">Submit</button>
+            </form>
+        </td>
+        <td>
+            <form action="/day" method="post">
+                <input type="text" name="task" placeholder="Enter Task">
+                <button type="submit">Submit</button>
+            </form>
+        </td>
+    </tr>
+</table>
+
+<%- include("partials/footer.ejs") %>

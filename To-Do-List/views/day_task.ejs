@@ -1,0 +1,12 @@
+<%- include("partials/header.ejs") %>
+
+<h2>Day's Task</h2>
+<% if(locals.list_day.length) {%>
+    <% for(i=0;i<list_day.length;i++) {  %>
+        <li>
+            <%= list_day[i] %>
+        </li>
+    <% } %>
+<% } %>
+
+<%- include("partials/footer.ejs") %>

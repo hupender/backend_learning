@@ -1,0 +1,12 @@
+<%- include("partials/header.ejs") %>
+
+<h2>Work's Task</h2>
+<% if(locals.list_work.length) {%>
+    <% for(i=0;i<list_work.length;i++) {  %>
+        <li>
+            <%= list_work[i] %>
+        </li>
+    <% } %>
+<% } %>
+
+<%- include("partials/footer.ejs") %>

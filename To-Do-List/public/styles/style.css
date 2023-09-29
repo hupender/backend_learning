@@ -1,0 +1,34 @@
+table , th , td {
+    border: solid black 2px;
+    border-collapse:collapse;
+}
+table {
+    margin: 0 auto;
+}
+th , td {
+    margin: 10px;
+    padding: 10px;
+    vertical-align: top;
+}
+h1 {
+    text-align: center;
+    font-size: 60px;
+}
+p{
+    padding-top: 550px;
+    text-align: center;
+}
+li {
+    list-style-type: none;
+}
+
+.flex-container {
+    display: flex;
+}
+.left {
+    flex: 1;
+    text-align: left;
+}
+.right{
+    text-align: right;
+}
