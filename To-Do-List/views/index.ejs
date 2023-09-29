@@ -10,14 +10,16 @@
             <% if(locals.list_work) {%>
                 <% for(i=0;i<list_work.length;i++) {  %>
                     <li>
-                        <div class="flex-container" id="work_list">
-                            <span class="left"> <input type="checkbox"> <%= list_work[i] %></span>
+                        <div class="flex-container">
+                            <span class="left"> <input type="checkbox"> <span>  <%= list_work[i] %></span></span>
                             <span class="right"> <button type="button">Del</button> </span>
                         </div>
                          
                     </li>
                 <% } %>
             <% } %>
+
+            
         </td>
         <td id="day_id">
             <% if(locals.list_day) {%>
