@@ -1,0 +1,23 @@
+console.log(req.body);
+  const type=req.body.type;
+  const participants=req.body.participants;
+  try {
+    const response = await axios.get(`https://bored-api.appbrewery.com/filter?type=${type}&participants=${participants}`);
+    // const response=await axios.get("https://bored-api.appbrewery.com/filter?type=${t}&participants=${p}/");
+    // console.log(response);
+    var index=Math.floor(Math.random()*response.length);
+    // console.log(index);
+    const result=response[index];
+    // const result=response.data;
+    res.render("index.ejs",
+    {data: result});
+  }
+  catch(error) {
+    console.error("Failed to make request:", error.message);
+    res.render("index.ejs", {
+      error: "No match ",
+    });
+  }
+
+
+
