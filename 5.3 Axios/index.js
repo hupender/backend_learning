@@ -25,22 +25,23 @@ app.get("/", async (req, res) => {
 });
 
 app.post("/", async (req, res) => {
+  console.log(req.body);
   const t=req.body.type;
   const p=req.body.participants;
-  try{
-    console.log("here1");
-    const response = await axios.get(`https://bored-api.appbrewery.com/filter?type=${t}&participants=${p}`);
-    // const response = await axios.get('https://bored-api.appbrewery.com/filter?type=${t}&participants=${p}');
-    console.log("now here");
-    const result=response.data;
-    console.log(result);
-    res.render("index.ejs",{
-      data: result[Math.floor(Math.random() * result.length)],
-    });
-  } catch(error) {
-    console.error("Failed to make a request:",error.message);
-    res.render("index.ejs",{
-      error: "No match Found",
+  try {
+    const response=await axios.get(`https://bored-api.appbrewery.com/filter?type=${t}&participants=${p}/`);
+    // console.log(response);
+    var index=Math.floor(Math.random()*response.data.length);
+    // console.log(index);
+    const result=response.data[index];
+    // const result=response.data;
+    res.render("index.ejs",
+    {data: result});
+  }
+  catch(error) {
+    console.error("Failed to make request:", error.message);
+    res.render("index.ejs", {
+      error: "No match ",
     });
   }
 
