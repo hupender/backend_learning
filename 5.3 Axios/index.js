@@ -26,7 +26,8 @@ app.post("/", async (req, res) => {
   const t=req.body.type;
   const p=req.body.participants;
   try {
-    const response=await axios.get(`https://bored-api.appbrewery.com/filter?type=${t}&participants=${p}/`);
+    const response=await axios.get("https://bored-api.appbrewery.com/filter?type="+ t + "&participants=" + p +"/");
+    // const response=await axios.get(`https://bored-api.appbrewery.com/filter?type=${t}&participants=${p}/`);
     // console.log(response);
     var index=Math.floor(Math.random()*response.data.length);
     // console.log(index);
