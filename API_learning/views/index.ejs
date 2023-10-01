@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CockTail</title>
+</head>
+<body>
+    <form method="post">
+        <input type="text" name="value" placeholder="Search...">
+        <br><br>
+        <input type="submit" formaction="/name" value="Search by name">
+        <input type="submit" formaction="/letter" value="Search by First Letter">
+        <input type="submit" formaction="/ingredients" value="Search Ingredients by name">
+        <input type="submit" formaction="/id" value="Search by ID">
+        <input type="submit" formaction="/random" value="Get a random CockTail">
+    </form>
+    <p><%= content %></p>
+</body>
+</html>
