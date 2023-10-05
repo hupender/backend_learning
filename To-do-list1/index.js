@@ -32,6 +32,7 @@ app.post("/",(req,res)=> {
         .catch((error)=> {
             console.log(error);
         });
+        // req.body.task=NULL;
     }
     // gets all the elements from the database
     task.find()
