@@ -15,7 +15,21 @@ app.use(bodyParser.urlencoded({extended:true}));
 const port=3000;
 
 app.get("/",(req,res)=> {
-    res.render("index.ejs");
+    task.find()
+    .then((results)=> {
+        var task_list=[];
+        for(var i=0;i<results.length;i++) {
+            task_list.push(results[i].task);
+            // console.log(results[i].task);
+        }
+        res.render("index.ejs",{
+            list: task_list,
+        });
+    })
+    .catch((error)=> {
+        console.log(error);
+    });
+    
 });
 
 app.post("/",(req,res)=> {
@@ -42,9 +56,7 @@ app.post("/",(req,res)=> {
             task_list.push(results[i].task);
             // console.log(results[i].task);
         }
-        res.render("index.ejs",{
-            list: task_list,
-        });
+        res.redirect("/");
     })
     .catch((error)=> {
         console.log(error);
