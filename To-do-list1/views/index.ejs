@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do-List</title>
+</head>
+<body>
+    <h1>To do</h1>
+    <form action="/" method="post">
+        <input type="text" name="task" id="input_task">
+        <button type="submit">Submit</button>
+    </form>
+    <% if(locals.list) { %>
+        <% for(var i=0;i<list.length;i++) { %>
+            <li> <%= list[i] %> </li>
+        <% } %>
+    <% } %>
+    <script src="/script/index.js"></script>
+</body>
+</html>
