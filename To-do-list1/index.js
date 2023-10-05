@@ -14,53 +14,33 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended:true}));
 const port=3000;
 
-app.get("/",(req,res)=> {
-    task.find()
-    .then((results)=> {
-        var task_list=[];
-        for(var i=0;i<results.length;i++) {
-            task_list.push(results[i].task);
-            // console.log(results[i].task);
-        }
-        res.render("index.ejs",{
-            list: task_list,
-        });
-    })
-    .catch((error)=> {
-        console.log(error);
+app.get("/", async function(req,res){
+    
+    var results = await task.find()
+
+    var task_list=[];
+    for(var i=0;i<results.length;i++) {
+        task_list.push(results[i].task);
+        // console.log(results[i].task);
+    }
+    res.render("index.ejs",{
+        list: task_list,
     });
     
 });
 
-app.post("/",(req,res)=> {
+app.post("/", async function(req,res){
     if(req.body.task) {
         // create a new task to push to the db
-        const task1=new task({
+        const task1= new task({
             task: req.body.task
         });
         // insert the from data to the db
-        task1.save()
-        .then((result)=> {
-            console.log(result);
-        })
-        .catch((error)=> {
-            console.log(error);
-        });
-        // req.body.task=NULL;
+        await task1.save()
     }
-    // gets all the elements from the database
-    task.find()
-    .then((results)=> {
-        var task_list=[];
-        for(var i=0;i<results.length;i++) {
-            task_list.push(results[i].task);
-            // console.log(results[i].task);
-        }
-        res.redirect("/");
-    })
-    .catch((error)=> {
-        console.log(error);
-    });
+
+    res.redirect("/");
+
 });
 
 app.listen(port,()=> {
